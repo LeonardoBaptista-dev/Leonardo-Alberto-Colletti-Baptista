@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Estilos Gerais */
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    color: #0056b3;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+h1 { font-size: 2.5rem; margin-top: 2rem; }
+h2 { font-size: 2rem; margin-top: 1.5rem; }
+
+p {
+    text-align: justify;
+    margin-bottom: 1.5rem;
+}
+
+/* Layout */
+#wrapper {
+    overflow-x: hidden;
+}
+
+#conteudoPagina {
+    min-width: 100vw;
+}
+
+.content-section {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+/* Barra Lateral */
+#barraLateral {
+    min-height: 100vh;
+    margin-left: -15rem;
+    transition: margin .25s ease-out;
+    background-color: #f8f9fa;
+}
+
+#barraLateral .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #0056b3;
+}
+
+#barraLateral .list-group {
+    width: 15rem;
+}
+
+#barraLateral .list-group-item {
+    border: none;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    color: #495057;
+    transition: background-color 0.3s ease;
+}
+
+#barraLateral .list-group-item:hover {
+    background-color: #e9ecef;
+    color: #0056b3;
+}
+
+#wrapper.toggled #barraLateral {
+    margin-left: 0;
+}
+
+/* Imagens */
+.img-container {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.img-hero, .img-medium {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.img-small {
+    max-width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #0056b3;
+}
+
+.navbar-brand, .nav-link {
+    color: #ffffff !important;
+}
+
+/* Formulário de Contato */
+#formContato button[type="submit"] {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    transition: background-color 0.3s ease;
+}
+
+#formContato button[type="submit"]:hover {
+    background-color: #003d82;
+    border-color: #003d82;
+}
+
+/* Preloader */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.preloader-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #0056b3;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Tabelas */
+.table {
+    margin-top: 1.5rem;
+}
+
+.table th {
+    background-color: #0056b3;
+    color: #ffffff;
+}
+
+/* Links de Comida */
+.comida-link {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.comida-link:hover {
+    transform: scale(1.05);
+}
+
+/* Caixas de Conteúdo */
+.content-box, .text-box, .highlight-box {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.text-box {
+    border-left: 4px solid #0056b3;
+}
+
+.highlight-box {
+    background-color: #e9ecef;
+    border: 1px solid #dee2e6;
+}
+
+/* Lista de Características */
+.feature-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.feature-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.feature-list li:last-child {
+    border-bottom: none;
+}
+
+.feature-list li::before {
+    content: "✓";
+    color: #0056b3;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-right: 0.5em;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+    #barraLateral {
+        margin-left: 0;
+    }
+
+    #conteudoPagina {
+        min-width: 0;
+        width: 100%;
+    }
+
+    #wrapper.toggled #barraLateral {
+        margin-left: -15rem;
+    }
+
+    .content-section {
+        flex-direction: row;
+    }
+
+    .content-section .text-content,
+    .content-section .img-container {
+        flex: 1;
+    }
+
+    .content-section .text-content {
+        padding-right: 2rem;
+    }
+
+    .content-section:nth-child(even) .img-container {
+        order: -1;
+        padding-right: 2rem;
+    }
+
+    .content-section:nth-child(even) .text-content {
+        padding-right: 0;
+        padding-left: 2rem;
+    }
+}
