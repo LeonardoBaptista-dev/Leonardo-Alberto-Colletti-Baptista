@@ -25,9 +25,7 @@ p {
 }
 
 /* Layout */
-#wrapper {
-    overflow-x: hidden;
-}
+
 
 #conteudoPagina {
     min-width: 100vw;

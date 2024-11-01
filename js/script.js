@@ -74,23 +74,49 @@ function mostrarFormularioContato() {
 
 // Inicializa o EmailJS
 (function() {
-    emailjs.init("YOUR_USER_ID"); // Substitua com seu User ID do EmailJS
-})();
+    emailjs.init(window.emailJSConfig.USER_ID);
+  })();
 
 // Manipulador de evento para o formulário de contato
-document.getElementById('formContato').addEventListener('submit', function(e) {
+(function() {
+    emailjs.init(window.emailJSConfig.USER_ID);
+  })();
+  
+  document.getElementById('formContato').addEventListener('submit', function(e) {
     e.preventDefault();
     
-    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
-        .then(function() {
-            console.log('SUCCESS!');
-            alert('Mensagem enviada com sucesso!');
-            document.getElementById('formContato').reset();
-        }, function(error) {
-            console.log('FAILED...', error);
-            alert('Falha ao enviar a mensagem. Por favor, tente novamente.');
-        });
-});
+    var formData = {
+      name: this.querySelector('input[name="name"]').value,
+      email: this.querySelector('input[name="email"]').value,
+      message: this.querySelector('textarea[name="message"]').value
+    };
+  
+    // Enviar notificação para o admin
+    emailjs.send(
+      window.emailJSConfig.SERVICE_ID,
+      window.emailJSConfig.ADMIN_TEMPLATE_ID,
+      formData
+    )
+    .then(function() {
+      console.log('Notificação enviada ao admin');
+      
+      // Enviar confirmação ao usuário
+      return emailjs.send(
+        window.emailJSConfig.SERVICE_ID,
+        window.emailJSConfig.USER_TEMPLATE_ID,
+        formData
+      );
+    })
+    .then(function() {
+      console.log('Confirmação enviada ao usuário');
+      alert('Mensagem enviada com sucesso! Verifique seu email para confirmação.');
+      document.getElementById('formContato').reset();
+    })
+    .catch(function(error) {
+      console.log('FAILED...', error);
+      alert('Falha ao enviar a mensagem. Por favor, tente novamente.');
+    });
+  });
 
 // Efeito de fade para imagens
 window.addEventListener('scroll', function() {
